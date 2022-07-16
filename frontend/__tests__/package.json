@@ -1,0 +1,28 @@
+{
+  "name": "tripper-dynamic-unit-testing",
+  "version": "1.0.0",
+  "description": "Unit tests for tripper-dynamic-application",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ICU_DATA=node_modules/full-icu TZ=Asia/Kolkata jest --verbose ./modules"
+  },
+  "keywords": [
+    "unit-testing",
+    "jest"
+  ],
+  "author": "sarath",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@testing-library/dom": "^8.16.0",
+    "babel-jest": "^28.1.3",
+    "full-icu": "^1.4.0",
+    "jest": "^28.1.3",
+    "jest-fetch-mock": "^3.0.3",
+    "jest-junit": "^14.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6"
+  }
+}

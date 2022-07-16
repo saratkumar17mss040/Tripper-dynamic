@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tripper</title>
+    <link rel="icon" type="image/x-icon" href="./assets/tripper-icon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ps-3">
+        <a class="navbar-brand" href="#">
+            <img class="tripper-img" src="./assets/tripper-icon.png" alt="tripper-icon" />
+            Tripper
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav d-flex justify-content-end w-100">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./pages/adventures/reservations/">Reservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./pages/adventures/favourites/index.html">Favourites</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero image section -->
+    <div class="hero-image d-flex justify-content-center align-items-center text-white flex-column text-center">
+        <div class="container">
+            <h1>Welcome to Tripper</h1>
+            <p class="hero-subheading">
+                Explore the world with fantastic places to venture around
+            </p>
+            <input id="hero-input-search" class="hero-input" type="search" placeholder="🔍 Search a City" />
+        </div>
+    </div>
+
+    <!-- Start of loader -->
+    <div id="loader" class="loadingio-spinner-disk-96xmnojipuu">
+        <div class="ldio-8oj2uzoa4yu">
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <!-- End of loader -->
+
+
+    <!-- Content section -->
+    <div class="container">
+        <div class="content text-white">
+            <div class="row" id="data">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">© Tripper 2020</div>
+    </footer>
+
+    <!-- Bootstrap script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Script for plugging in HTML of the Content section -->
+    <script type="module">
+        import { init } from "./modules/landing_page.js";
+        //entry point (executed when DOM is loaded)
+        (function () {
+            init();
+        })();
+    </script>
+</body>
+
+</html>
