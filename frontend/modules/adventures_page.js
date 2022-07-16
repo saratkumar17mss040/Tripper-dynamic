@@ -54,10 +54,10 @@ async function postNewAdventure(city) {
         if (postAdventureData.success) {
             toast.show();
             await fetchAdventures(city);
-            setTimeout(() => {
-                // toastLiveExample.classList.remove('hide');
-                toast.hide();
-            }, 3000);
+            // setTimeout(() => {
+            //     // toastLiveExample.classList.remove('hide');
+            //     toast.hide();
+            // }, 3000);
         }
     } catch (err) {
         return null;
