@@ -26,7 +26,7 @@ const PORT = 8082;
 
 app.get("/", (req, res) => {
     return res.json({
-        message: 'Welcome to tripper rest-api !'
+        message: 'Welcome to 🌎 tripper rest-api !'
     });
 });
 
@@ -172,6 +172,34 @@ app.get("/reservations", (req, res) => {
     if (data) return res.json(data);
 });
 
+
+app.delete("/reservations", (req, res) => {
+    const adventureId = req.body.adventureId;
+    console.log({ adventureId });
+    console.log(typeof adventureId);
+    console.log(req);
+    if (!adventureId) {
+        return res.status(400).json({
+            message: "adventureId field is missing"
+        });
+    }
+    const adventure = db.get("reservations").value().find((item) => item.adventure == adventureId);
+    console.log(adventure);
+    if (!adventure) {
+        return res.status(400).json({
+            message: "adventureId value does not exist in DB"
+        });
+    }
+    else {
+        db.get("reservations").remove({ adventure: adventureId.toString() }).write();
+        db.get("detail").find((item) => item.id == adventureId).assign({ reserved: false, available: true }).write();
+        return res.json({
+            success: true,
+            message: `Adventure of ${adventureId} is successfully deleted`
+        });
+    }
+});
+
 /*
 [POST] API used to insert a randomly generated adventure to a city
 The input is of the format
@@ -243,6 +271,7 @@ app.post("/adventures/new", (req, res) => {
 
     res.json({ success: true, ...adventuresData });
 });
+
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Backend is running on port ${process.env.PORT || PORT}`);

@@ -1,13 +1,6 @@
 import config from "../conf/index.js";
 import { displayLoader, hideLoader } from "../utils/utils.js";
 
-const toastTrigger = document.getElementById('liveToastBtn')
-// if (toastTrigger) {
-//     toastTrigger.addEventListener('click', () => {
-//         // const toast = new bootstrap.Toast(toastLiveExample)
-//         // toast.show();
-//     })
-// }
 
 //Implementation to extract city from query params
 function getCityFromURL(search) {
@@ -39,31 +32,47 @@ async function fetchAdventures(city) {
 }
 
 async function postNewAdventure(city) {
-    const toastLiveExample = document.getElementById('liveToast');
+    const toastLiveExample = document.getElementById('liveToastForAddNewAdventure');
     const toast = new bootstrap.Toast(toastLiveExample);
+    const toastBody = document.querySelector('.toast-body');
+    const toastBodyDiv = document.querySelector('.toast-body-div');
     try {
-        const postAdvenutreRes = await fetch(`${config.backendEndpoint}/adventures/new`, {
-            method: "POST",
-            body: JSON.stringify({ city }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        const postAdventureData = await postAdvenutreRes.json();
+        // const postAdvenutreRes = await fetch(`${config.backendEndpoint}/adventures/new`, {
+        //     method: "POST",
+        //     body: JSON.stringify({ city }),
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        // });
+        // const postAdventureData = await postAdvenutreRes.json();
+        const postAdventureData = { success: true};
         console.log(postAdventureData);
         if (postAdventureData.success) {
+            toastBody.textContent = 'Success: Random adventure added !';
+            toastBodyDiv.classList.add('toast-success');
             toast.show();
             await fetchAdventures(city);
-            // setTimeout(() => {
-            //     // toastLiveExample.classList.remove('hide');
-            //     toast.hide();
-            // }, 3000);
+            setTimeout(() => {
+                toast.hide();
+                toastBodyDiv.classList.remove('toast-success');
+            }, 2000);
+        }
+        else {
+            toastBody.textContent = 'Failed: Failed to add Random adventure !';
+            toastBodyDiv.classList.add('toast-warning');
+            toast.show();
+            await fetchAdventures(city);
+            setTimeout(() => {
+                toast.hide();
+                toastBodyDiv.classList.remove('toast-warning');
+            }, 2000);
         }
     } catch (err) {
+        console.error(err);
         return null;
     }
     finally {
-        // toast.hide();
+        toast.hide();
     }
 }
 

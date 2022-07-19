@@ -154,16 +154,29 @@ async function postReservationFormData(adventure, reservationForm) {
             }
         );
         const reservationData = await reservationRes.json();
+        const alertTop = document.querySelector('.myAlert-top');
+        const alertMsg = document.getElementById('alert-msg');
+        const alertContainer = document.getElementById('alert-container');
+        alertMsg.textContent = '';
         if (reservationData.success) {
-            alert('Success !');
-            location.reload();
+            alertTop.style.display = 'flex';
+            alertMsg.textContent = 'Success: Adventure reserved !';
+            alertContainer.classList.add('alert-success');
+            setTimeout(function () {
+                alertContainer.classList.remove('alert-success');
+                alertTop.style.display = 'none';
+            }, 2000);
         }
         else {
-            alert("Failed !");
-            alert(reservationData.message);
+            alertTop.style.display = 'flex';
+            alertMsg.textContent = `Failed: ${reservationData.message} !`;
+            alertContainer.classList.add('alert-warning');
+            setTimeout(function () {
+                alertContainer.classList.remove('alert-warning');
+                alertTop.style.display = 'none';
+            }, 2000);
         }
     } catch (err) {
-        alert("Failed: ", err.message);
         console.error(err);
     }
 }

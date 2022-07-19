@@ -310,8 +310,44 @@ input[type="number"] {
     top: 140px;
 }
 
+.alert {
+    display: none;
+}
+
+.myAlert-top {
+    top: 5px;
+    width: 50%;
+    margin-top: 6rem;
+}
+
 .toast {
     opacity: 1 !important;
+}
+
+.toast-success {
+    color: #0f5132 !important;
+    background-color: #d1e7dd !important;
+    border-color: #badbcc !important;
+}
+
+.toast-warning {
+    color: #664d03 !important;
+    background-color: #fff3cd !important;
+    border-color: #ffecb5 !important;
+}
+
+.alert-success {
+    opacity: 1 !important;
+}
+
+.alert-warning {
+    opacity: 1 !important;
+}
+
+.delete-reservation {
+    color: rgb(224, 14, 14);
+    cursor: pointer;
+    font-size: 22px;
 }
 
 @keyframes ldio-8oj2uzoa4yu {
@@ -368,7 +404,3 @@ input[type="number"] {
 .ldio-8oj2uzoa4yu div {
     box-sizing: content-box;
 }
-
-
-
-
