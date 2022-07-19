@@ -41,6 +41,7 @@ The response is an [array] of cities with each having the following structure :
 }
 Data is sourced from "cities" array in db.json file
 */
+
 app.get("/cities", (req, res) => {
     const data = db.get("cities").value();
     return res.json(data);
@@ -60,6 +61,7 @@ The response is an [array] of adventures with each having the following structur
  }
 Data is sourced from "adventures" array in db.json file
 */
+
 app.get("/adventures", (req, res) => {
     const data = db.get("adventures").value();
     let response = (data.find((item) => item.id == req.query.city) || [])
@@ -90,6 +92,7 @@ The response is an [array] of adventures with each having the following structur
  }
 Data is sourced from "adventures" array in db.json file
 */
+
 app.get("/adventures/detail", (req, res) => {
     const data = db.get("detail").value();
     let response = data.find((item) => item.id == req.query.adventure);
@@ -105,6 +108,7 @@ app.get("/adventures/detail", (req, res) => {
 Expects serialized form data in the format name=Roy&date=2020-10-08&person=2&adventure=8318638903
 If the reservation is successful, it flips the "available" key to "false" and "reserved" key to "true" for the given adventure
 */
+
 app.post("/reservations/new", (req, res) => {
     const reservation = req.body;
     if (!(reservation.name && reservation.date && reservation.person && reservation.adventure)) {
@@ -112,7 +116,6 @@ app.post("/reservations/new", (req, res) => {
             message: `Invalid data received`,
         });
     }
-
     const instance = db.get("detail").value();
     const nanoid = customAlphabet("1234567890abcdef", 16);
     let reqDate = dayjs(req.body.date);
@@ -167,6 +170,7 @@ The response is an [array] of reservations with each having the following struct
 }
 Data is sourced from "reservations" array in db.json file
 */
+
 app.get("/reservations", (req, res) => {
     const data = db.get("reservations").value();
     if (data) return res.json(data);
@@ -175,16 +179,12 @@ app.get("/reservations", (req, res) => {
 
 app.delete("/reservations", (req, res) => {
     const adventureId = req.body.adventureId;
-    console.log({ adventureId });
-    console.log(typeof adventureId);
-    console.log(req);
     if (!adventureId) {
         return res.status(400).json({
             message: "adventureId field is missing"
         });
     }
     const adventure = db.get("reservations").value().find((item) => item.adventure == adventureId);
-    console.log(adventure);
     if (!adventure) {
         return res.status(400).json({
             message: "adventureId value does not exist in DB"
@@ -218,6 +218,7 @@ The response is a randomly generated adventure inserted to given city
     "category": "Cycling"
 }
 */
+
 app.post("/adventures/new", (req, res) => {
     let categories = ["Beaches", "Cycling", "Hillside", "Party"];
     let places = random_data.places;
@@ -280,6 +281,7 @@ app.listen(process.env.PORT || PORT, () => {
 /*
 Helper function to generate a random integer between two limits
 */
+
 function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

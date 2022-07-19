@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,9 +15,8 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
-
+    <!-- Start of modal section -->
     <div class="modal fade" id="adventureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -37,7 +35,9 @@
             </div>
         </div>
     </div>
+    <!-- End of modal section -->
 
+    <!-- Start of navigation section -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light ps-3">
         <a class="navbar-brand" href="../../../">
             <img class="tripper-img" src="../../../assets/tripper-icon.png" alt="tripper-icon" />
@@ -57,13 +57,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reservations/">Reservations</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../reservations/index.html">Favourites</a>
-                </li>
             </ul>
         </div>
     </nav>
+    <!-- End of navigation section -->
 
+    <!-- Start of toast notification section -->
     <div class="toast-container position-fixed top-100px start-50 translate-middle p-3" style="z-index:11;">
         <div id="liveToastForAddNewAdventure" class="toast fade hide" role="alert" data-bs-autohide="false"
             data-bs-delay="3000" data-bs-animation="true" aria-live="assertive" aria-atomic="true">
@@ -75,6 +74,7 @@
             </div>
         </div>
     </div>
+    <!-- End of toast notification section -->
 
     <!-- Start of loader -->
     <div id="loader" class="loadingio-spinner-disk-96xmnojipuu text-center">
@@ -87,7 +87,7 @@
     </div>
     <!-- End of loader -->
 
-
+    <!-- Start of reservation table container section -->
     <div class="container">
         <div class="content">
             <h1>Your Reservations</h1>
@@ -119,10 +119,13 @@
             </div>
         </div>
     </div>
+    <!-- End of reservation table container section -->
 
+    <!-- Start of footer section -->
     <footer>
         <div class="container">© Tripper 2020</div>
     </footer>
+    <!-- End of footer section -->
 
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -137,9 +140,6 @@
             const reservations = await fetchReservations();
             addReservationToTable(reservations);
         })();
-
     </script>
-
 </body>
-
 </html>

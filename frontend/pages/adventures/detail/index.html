@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,9 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-
 <body>
-
+    <!-- Start of navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light ps-3">
         <a class="navbar-brand" href="../../../">
             <img class="tripper-img" src="../../../assets/tripper-icon.png" alt="tripper-icon" />
@@ -33,18 +31,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../reservations/">Reservations</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../favourites/index.html">Favourites</a>
-                </li>
             </ul>
         </div>
     </nav>
+    <!-- End of navigation bar -->
 
-
+    <!-- Start of alert section -->
     <div id="alert-container" class="myAlert-top alert alert-success justify-content-between fixed-top mx-auto fade">
         <strong><span id="alert-msg"></span></strong>
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     </div>
+    <!-- End of alert section -->
 
     <!-- Start of loader -->
     <div id="loader" class="loadingio-spinner-disk-96xmnojipuu">
@@ -57,6 +54,7 @@
     </div>
     <!-- End of loader -->
 
+    <!-- Start of adventure detail container section -->
     <div class="container">
         <div class="content">
             <div class="alert alert-success" id="reserved-banner">
@@ -73,11 +71,6 @@
                         </div>
                         <div class="row mb-3" id="photo-gallery" class="carousel slide" data-bs-ride="carousel">
                         </div>
-                        <button type="button" class="btn btn-warning mb-3 fw-bold">
-                            <img src="https://img.icons8.com/ios/50/000000/star--v1.png" alt="favourite-icon"
-                                width="18px" height="18px" /> Add
-                            to favourites
-                        </button>
                         <hr />
                         <h5>About the Experience</h5>
                         <div id="adventure-content"></div>
@@ -133,9 +126,13 @@
             </div>
         </div>
     </div>
+    <!-- End of adventure detail container section -->
+
+    <!-- Start of footer section -->
     <footer>
         <div class="container">© Tripper 2020</div>
     </footer>
+    <!-- End of footer section -->
 
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

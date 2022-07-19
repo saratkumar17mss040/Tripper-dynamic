@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- Navigation bar -->
+    <!-- Start of Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light ps-3">
         <a class="navbar-brand" href="../../">
             <img class="tripper-img" src="../../assets/tripper-icon.png" alt="tripper-icon" />
@@ -35,16 +35,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./reservations/">Reservations</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./favourites/index.html">Favourites</a>
-                </li>
             </ul>
         </div>
     </nav>
+    <!-- End of Navigation bar -->
 
+    <!-- Start of toast notification  -->
     <div class="toast-container position-fixed top-100px start-50 translate-middle p-3" style="z-index:11;">
-        <div id="liveToastForAddNewAdventure" class="toast fade hide" role="alert" data-bs-autohide="false" data-bs-delay="3000" data-bs-animation="true" aria-live="assertive"
-            aria-atomic="true">
+        <div id="liveToastForAddNewAdventure" class="toast fade hide" role="alert" data-bs-autohide="false"
+            data-bs-delay="3000" data-bs-animation="true" aria-live="assertive" aria-atomic="true">
             <div class="d-flex toast-body-div">
                 <div class="toast-body fw-bold">
                 </div>
@@ -53,8 +52,9 @@
             </div>
         </div>
     </div>
+    <!-- End of toast notification -->
 
-    <!-- Content section -->
+    <!-- Start of Content section -->
     <div class="container">
         <div class="content">
             <!-- Page heading and description -->
@@ -101,10 +101,11 @@
                         onclick="addNewAdventure(event)">
                         Add new adventure
                     </button>
-                    <!-- Section to display all selected categories  -->
-                    <div class="mt-2" id="category-section">
-                        <div class="d-flex align-items-center" id="category-list"></div>
-                    </div>
+                </div>
+                
+                <!-- Section to display all selected categories  -->
+                <div class="mt-2" id="category-section">
+                    <div class="d-flex align-items-center" id="category-list"></div>
                 </div>
 
                 <!-- Start of loader -->
@@ -123,10 +124,14 @@
             </div>
         </div>
     </div>
-    <!-- Footer -->
+    <!-- End of Content section -->
+
+    <!-- Start of footer section -->
     <footer>
         <div class="container">© Tripper 2020</div>
     </footer>
+    <!-- End of footer section -->
+
 
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -148,11 +153,7 @@
             addListenersForClosingPills,
         } from "../../modules/adventures_page.js";
 
-        // Declaring global variable adventure
         let adventures;
-
-        //Checks if filters are available in local storage and sets the value accordingly
-        // The structure of "filters" object is { duration : "6-10", category : [] }, which basically means duration is single-value filter and category is multi-value filter
 
         let filters =
             getFiltersFromLocalStorage() !== null
@@ -161,49 +162,30 @@
 
         //entry point (executed when DOM is loaded)
         (async function () {
-            //Fetches the City from URL query param (here : window.location.search is an in-built browser property that returns the query param from URL, example: http://localhost:8081/?city=bengaluru => window.location.search would return "?city=bengaluru")
             let city = await getCityFromURL(window.location.search);
-
-            //Fetches the adventures for the particular city
             adventures = await fetchAdventures(city);
-
-            //Applies filters on the adventures list
             let filteredAdventures = filterFunction(adventures, filters);
-
-            //Updates the filtered adventures list to the DOM
             addAdventureToDOM(filteredAdventures);
-
-            //Select recently selected duration
             setRecentlySelectedDuration(filters);
-
-            // Updates the DOM with filter pills if any
             generateFilterPillsAndUpdateDOM(filters);
         })();
 
         //executed when onChange() is triggered on duration filter dropdown
         function selectDuration(event) {
-            // TODO: MODULE_FILTERS
-            // 1. Change the DOM to show the selected duration filter. Use the provided input event
-            // 2. Invoke saveFiltersToLocalStorage here
             const selectedOption = event.target.options[event.target.selectedIndex];
             const durationRange = selectedOption.value;
             filters.duration = durationRange;
             const filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
             saveFiltersToLocalStorage(filters);
-            // selectedOption.setAttribute('selected', true);
         }
 
         //executed when clear button is clicked on duration filter dropdown
         function clearDuration(event) {
-            // TODO: MODULE_FILTERS
-            // 1. Change the DOM to clear the Duration filter. Refer clearCategory() below
-            // 2. Invoke saveFiltersToLocalStorage here
             document.getElementById("data").textContent = "";
             document.getElementById("duration-select").selectedIndex = 0;
             filters.duration = "";
             const filteredAdventures = filterFunction(adventures, filters);
-            // event.target.options[event.target.selectedIndex];
             addAdventureToDOM(filteredAdventures);
             saveFiltersToLocalStorage(filters);
         }
@@ -212,21 +194,14 @@
         function selectCategory(event) {
             document.getElementById("data").textContent = "";
             document.getElementById("category-list").textContent = "";
-
             let category = event.target.value;
             document.getElementById("category-select").selectedIndex = 0;
-
             filters["category"].push(category);
             filters["category"] = filters["category"].filter(onlyUnique);
-
             generateFilterPillsAndUpdateDOM(filters, adventures);
             addListenersForClosingPills(filters, adventures);
-
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
-
-            // TODO: MODULE_FILTERS
-            // 1. Invoke saveFiltersToLocalStorage here
             saveFiltersToLocalStorage(filters);
         }
 
@@ -234,13 +209,9 @@
         function clearCategory(event) {
             document.getElementById("data").textContent = "";
             document.getElementById("category-list").textContent = "";
-
             filters["category"] = [];
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
-
-            // TODO: MODULE_FILTERS
-            // 1. Invoke saveFiltersToLocalStorage here
             saveFiltersToLocalStorage(filters);
         }
 
