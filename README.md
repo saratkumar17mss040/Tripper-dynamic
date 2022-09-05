@@ -1,2 +1,2 @@
 # Tripper-dynamic
-A dynamic travel website
+Tripper dynamic is a travel website aimed at travellers looking for a multitude of adventures in different cities. 
