@@ -12,4 +12,8 @@ function hideLoader(ele) {
     ele.classList.add("d-none");
 }
 
-export { displayLoader, hideLoader };
+function timeout(ms) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export { displayLoader, hideLoader, timeout };

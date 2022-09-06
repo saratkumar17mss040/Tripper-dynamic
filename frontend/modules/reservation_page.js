@@ -1,5 +1,5 @@
 import config from '../conf/index.js';
-import { hideLoader, displayLoader } from '../utils/utils.js';
+import { hideLoader, displayLoader, timeout } from '../utils/utils.js';
 
 //Implementation of fetch call to fetch all reservations
 async function fetchReservations() {
@@ -117,10 +117,11 @@ function addReservationToTable(reservations) {
 				console.error(deleteAdventureData);
 				toastBodyDiv.classList.add('toast-warning');
 				toast.show();
+				await timeout(2000);
 				setTimeout(() => {
 					toast.hide();
 					toastBodyDiv.classList.remove('toast-warning');
-				}, 2000);
+				});
 			}
 		} catch (err) {
 			console.error(err);
