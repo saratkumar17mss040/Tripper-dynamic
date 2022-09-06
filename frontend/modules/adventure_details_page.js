@@ -160,6 +160,9 @@ async function postReservationFormData(adventure, reservationForm) {
     } catch (err) {
         console.error(err);
     }
+    finally {
+        location.reload();
+    }
 }
 
 //Implementation of success banner after reservation

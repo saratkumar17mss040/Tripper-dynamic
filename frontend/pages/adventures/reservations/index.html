@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tripper - Travel tourist website" />
+    <meta name="keywords" content="Trave, Tourism, Tourist, Adventure" />
+    <meta name="author" content="Sarath" />
     <title>Tripper Adventures</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/tripper-icon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +19,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <!-- Start of modal section -->
     <div class="modal fade" id="adventureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,8 +103,8 @@
                 <a href="../../../"><strong>here</strong></a>
                 to explore some cities)
             </div>
-            <div class="row" id="reservation-table-parent">
-                <table class="table">
+            <div class="row" id="reservation-table-parent" style="overflow-x: auto;">
+                <table class="table" aria-labelledby="reservation-detail-in-table-view">
                     <thead>
                         <tr>
                             <th scope="col">Transaction ID</th>
@@ -142,4 +147,5 @@
         })();
     </script>
 </body>
+
 </html>

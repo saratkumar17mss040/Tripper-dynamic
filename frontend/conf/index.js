@@ -1,3 +1,3 @@
-const config = { backendEndpoint: "http://127.0.0.1:8082" };
+const config = { backendEndpoint: "https://tripper-dynamic-6110.herokuapp.com" };
 
 export default config;
