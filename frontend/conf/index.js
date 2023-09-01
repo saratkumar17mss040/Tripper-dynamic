@@ -1,3 +1,3 @@
-const config = { backendEndpoint: "https://tripper-dynamic-6110.herokuapp.com" };
+const config = { backendEndpoint: "https://tripper-backend.onrender.com" };
 
 export default config;
